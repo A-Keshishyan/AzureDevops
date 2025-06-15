@@ -15,29 +15,29 @@ steps:
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
 
+# ✅ Step 1: Install Python dependencies (including selenium!)
 - script: |
-
     python -m pip install --upgrade pip
-    pip install pytest-html
     pip install -r requirements.txt
-    pip install pytest pytest-azurepipelines allure-pytest
+    pip install pytest pytest-azurepipelines allure-pytest selenium
     npm install -g allure-commandline
   displayName: 'Install Dependencies'
 
-
+# ✅ Step 2: Run tests and generate allure-results
 - script: |
-    pytest --alluredir=**/allure-results
-  
+    pytest --alluredir=allure-results
   displayName: 'Run Tests'
 
+# ✅ Step 3: Publish test results (if you also generate JUnit XMLs)
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/TEST-*.xml'
-  condition: always() 
-    
+  condition: always()
+
+# ✅ Step 4: Generate and publish Allure report
 - task: PublishAllureReport@1
   inputs:
     allureVersion: '2.25.0'
-    testResultsDir: '**/allure-results'
-  condition: always() 
+    testResultsDir: 'allure-results'   # ✅ NO wildcards here
+  condition: always()
