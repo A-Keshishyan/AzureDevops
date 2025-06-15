@@ -1,0 +1,5 @@
+2025-06-07 11:50:45,526 - INFO - test_register_user_with_valid_data is started
+2025-06-07 11:50:47,147 - INFO - https://qwallity-prod.onrender.com/ is opened.
+2025-06-07 11:50:54,869 - INFO - User is registered successfully.
+2025-06-07 11:51:02,125 - INFO - User is logged in successfully.
+2025-06-07 11:51:02,126 - INFO - test_register_user_with_valid_data is finished
