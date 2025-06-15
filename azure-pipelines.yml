@@ -19,7 +19,7 @@ steps:
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
-    pip install pytest pytest-azurepipelines allure-pytest selenium
+    pip install pytest pytest-azurepipelines allure-pytest selenium faker
     npm install -g allure-commandline
   displayName: 'Install Dependencies'
 
